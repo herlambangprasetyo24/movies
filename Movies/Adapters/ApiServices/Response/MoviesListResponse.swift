@@ -15,7 +15,7 @@ class MoviesListResponse: Mappable {
     var page = 0
     var totalResults = 0
     var totalPages = 0
-    var movieList = [MovieResponse]()
+    var movieList = [MovieDetailResponse]()
     
     required init?(map: Map) {
         //Nothing to do!?
@@ -35,7 +35,7 @@ class MoviesListResponse: Mappable {
         movies.totalResults = totalResults
         
         movieList.forEach { movie in
-            movies.movieList.append(movie.toMovie())
+            movies.movieList.append(movie.toMovieDetail())
         }
         
         return movies

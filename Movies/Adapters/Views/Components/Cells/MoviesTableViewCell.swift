@@ -28,7 +28,7 @@ class MoviesTableViewCell: UITableViewCell {
         return String(describing: self)
     }
     
-    func setupUI(movieViewParam: MovieViewParams) {
+    func setupUI(movieViewParam: MovieDetailViewParams) {
         titleMoviesLabel.text = movieViewParam.title
         releaseDateMoviesLabel.text = movieViewParam.releaseDate
         moviesOverviewLabel.text = movieViewParam.overview

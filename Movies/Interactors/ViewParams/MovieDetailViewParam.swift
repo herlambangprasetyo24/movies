@@ -15,7 +15,7 @@ class MovieDetailViewParams {
     var posterPath = ""
     var title = ""
     var originalTitle = ""
-    var overView = ""
+    var overview = ""
     var releaseDate = ""
     var voteAverage = 0.0
     
@@ -27,7 +27,7 @@ class MovieDetailViewParams {
         movieDetailViewParams.posterPath = movieDetail.posterPath
         movieDetailViewParams.title = movieDetail.title
         movieDetailViewParams.originalTitle = movieDetail.originalTitle
-        movieDetailViewParams.overView = movieDetail.overview
+        movieDetailViewParams.overview = movieDetail.overview
         movieDetailViewParams.releaseDate = movieDetail.releaseDate
         movieDetailViewParams.voteAverage = movieDetail.voteAverage
         

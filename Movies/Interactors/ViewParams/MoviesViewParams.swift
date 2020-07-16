@@ -12,7 +12,7 @@ class MoviesViewParams {
     var page = 0
     var totalResults = 0
     var totalPages = 0
-    var movieList = [MovieViewParams]()
+    var movieList = [MovieDetailViewParams]()
     
     static func create(movies: Movies) -> MoviesViewParams {
         
@@ -22,7 +22,7 @@ class MoviesViewParams {
         moviesViewParam.totalPages = movies.totalResults
         
         movies.movieList.forEach { movie in
-            moviesViewParam.movieList.append(MovieViewParams.create(movie: movie))
+            moviesViewParam.movieList.append(MovieDetailViewParams.create(movieDetail: movie))
         }
         
         return moviesViewParam

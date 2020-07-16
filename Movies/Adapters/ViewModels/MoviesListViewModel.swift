@@ -15,14 +15,14 @@ class MoviesListViewModel {
         return eventLoadMovies
     }
     
-    var rxEventOpenMoviesDetail: PublishSubject<MovieViewParams> {
+    var rxEventOpenMoviesDetail: PublishSubject<MovieDetailViewParams> {
         return eventOpenMovieDetail
     }
     
     var moviesViewParam = MoviesViewParams()
     
     private let eventLoadMovies = PublishSubject<Void>()
-    private let eventOpenMovieDetail = PublishSubject<MovieViewParams>()
+    private let eventOpenMovieDetail = PublishSubject<MovieDetailViewParams>()
     private let displayMovie: DisplayMovieProtocol
     
     private let disposeBag = DisposeBag()

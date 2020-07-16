@@ -13,6 +13,7 @@ class Movies: Object {
     @objc dynamic var page = 0
     @objc dynamic var totalResults = 0
     @objc dynamic var totalPages = 0
-    var movieList = List<Movie>()
+    var movieList = List<MovieDetail>()
 
 }
+    

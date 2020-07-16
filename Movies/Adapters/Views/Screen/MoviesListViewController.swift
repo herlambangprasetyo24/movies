@@ -33,8 +33,8 @@ class MoviesListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openMoviesDetailPage" {
-            guard let destinationViewController = segue.destination as? MovieDetailViewController, let movieViewParam = sender as? MovieViewParams else { return }
-            destinationViewController.setMovieAndTitle(movieId: movieViewParam.id, title: movieViewParam.title)
+            guard let destinationViewController = segue.destination as? MovieDetailViewController, let movieDetailViewParams = sender as? MovieDetailViewParams else { return }
+            destinationViewController.setMovieAndTitle(movieId: movieDetailViewParams.id, title: movieDetailViewParams.title)
         }
     }
     
@@ -54,13 +54,13 @@ class MoviesListViewController: UIViewController {
             }).disposed(by: disposeBag)
         
         moviesListViewModel.rxEventOpenMoviesDetail
-            .subscribe(onNext: { [weak self] movieViewParams in
-                self?.openMovieDetail(movieViewParams: movieViewParams)
+            .subscribe(onNext: { [weak self] movieDetailViewParams in
+                self?.openMovieDetail(movieDetailViewParams: movieDetailViewParams)
             }).disposed(by: disposeBag)
     }
     
-    private func openMovieDetail(movieViewParams: MovieViewParams) {
-        performSegue(withIdentifier: "openMoviesDetailPage", sender: movieViewParams)
+    private func openMovieDetail(movieDetailViewParams: MovieDetailViewParams) {
+        performSegue(withIdentifier: "openMoviesDetailPage", sender: movieDetailViewParams)
     }
     
     private func registerTableViewCellNib() {

@@ -33,7 +33,7 @@ class MoviesInformationTableViewCell: UITableViewCell {
         movieTitleLabel.text = movieDetailViewParams.title
         movieReleaseDate.text = "Release: \(movieDetailViewParams.releaseDate)"
         movieRatingLabel.text = "Rating: \(movieDetailViewParams.voteAverage)"
-        movieOverviewLabel.text = movieDetailViewParams.overView
+        movieOverviewLabel.text = movieDetailViewParams.overview
     }
 
 }
