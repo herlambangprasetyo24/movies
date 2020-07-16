@@ -83,6 +83,10 @@ extension MovieDetailViewController: UITableViewDelegate, UITableViewDataSource 
         if indexPath.section == 0 {
             let moviesCell = tableView.dequeueReusableCell(withIdentifier: MoviesInformationTableViewCell.cellReuseIdentifier()) as! MoviesInformationTableViewCell
             moviesCell.setupUI(movieDetailViewParams: movieDetailViewModel.movieDetailViewParams)
+            moviesCell.set(onSelectFavouriteMovie: {
+                self.movieDetailViewModel.saveToFavourite()
+                self.movieDetailViewModel.getFavourite()
+            })
             return moviesCell
         } else if indexPath.section == 1 {
             let movieReviewTableViewCell = tableView.dequeueReusableCell(withIdentifier: MovieReviewTableViewCell.cellReuseIdentifier()) as! MovieReviewTableViewCell

@@ -19,7 +19,8 @@ extension SwinjectStoryboard {
             StoryboardsAssembly(),
             ViewModelsAssembly(),
             InteractorsAssembly(),
-            ApisAssembly()
+            ApisAssembly(),
+            StoragesAssembly()
             ],
             container: defaultContainer
         )

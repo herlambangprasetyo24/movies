@@ -37,6 +37,17 @@ class MovieDetailViewModel {
         self.movieId = movieId
     }
     
+    func saveToFavourite() {
+        displayMovie.saveMovieFavourite(movieDetailViewParam: movieDetailViewParams)
+    }
+    
+    func getFavourite() {
+        displayMovie.getMovieFavourite()
+            .subscribe(onSuccess: { moviesViewParams in
+                print("aaaaa")
+            }).disposed(by: disposeBag)
+    }
+    
     private func getMovieDetail() {
         displayMovie.getMovieDetail(movieId: movieId)
             .subscribe(onSuccess: { [weak self] movieDetailViewParams in

@@ -13,7 +13,7 @@ class InteractorsAssembly: Assembly {
     
     func assemble(container: Container) {
         container.register(DisplayMovieProtocol.self) { r in
-            DisplayMovie(api: r.resolve(MoviesApi.self)!)
+            DisplayMovie(api: r.resolve(MoviesApi.self)!, movieListStore: r.resolve(MovieListStore.self)!)
         }
     }
 }

@@ -33,5 +33,20 @@ class MovieDetailViewParams {
         
         return movieDetailViewParams
     }
+    
+    static func create(movieDetailViewParams: MovieDetailViewParams) -> MovieDetail {
+        
+        let movieDetail = MovieDetail()
+        movieDetail.id = movieDetailViewParams.id
+        movieDetail.backdropPath = movieDetailViewParams.backdropPath
+        movieDetail.posterPath = movieDetailViewParams.posterPath
+        movieDetail.title = movieDetailViewParams.title
+        movieDetail.originalTitle = movieDetailViewParams.originalTitle
+        movieDetail.overview = movieDetailViewParams.overview
+        movieDetail.releaseDate = movieDetailViewParams.releaseDate
+        movieDetail.voteAverage = movieDetailViewParams.voteAverage
+        
+        return movieDetail
+    }
 
 }

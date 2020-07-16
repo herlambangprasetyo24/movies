@@ -9,12 +9,17 @@
 import UIKit
 
 class MoviesInformationTableViewCell: UITableViewCell {
+    
+    typealias SelectFavouriteMovieClosure = () -> Void
 
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieReleaseDate: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var movieOverviewLabel: UILabel!
+    
+    private var onSelectFavouriteMovie: SelectFavouriteMovieClosure = { }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,6 +33,10 @@ class MoviesInformationTableViewCell: UITableViewCell {
         return String(describing: self)
     }
     
+    func set(onSelectFavouriteMovie: @escaping SelectFavouriteMovieClosure) {
+        self.onSelectFavouriteMovie = onSelectFavouriteMovie
+    }
+    
     func setupUI(movieDetailViewParams: MovieDetailViewParams) {
         movieImageView.loadUrl("https://image.tmdb.org/t/p/w500" + movieDetailViewParams.backdropPath)
         movieTitleLabel.text = movieDetailViewParams.title
@@ -36,4 +45,7 @@ class MoviesInformationTableViewCell: UITableViewCell {
         movieOverviewLabel.text = movieDetailViewParams.overview
     }
 
+    @IBAction func favouriteButtonAction(_ sender: Any) {
+        onSelectFavouriteMovie()
+    }
 }
