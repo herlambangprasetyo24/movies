@@ -11,6 +11,7 @@ import RealmSwift
 
 class Movie: Object {
     @objc dynamic var posterPath = ""
+    @objc dynamic var title = ""
     @objc dynamic var originalTitle = ""
     @objc dynamic var overview = ""
     @objc dynamic var releaseDate = ""

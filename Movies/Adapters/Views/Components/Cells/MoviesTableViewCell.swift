@@ -29,7 +29,7 @@ class MoviesTableViewCell: UITableViewCell {
     }
     
     func setupUI(movieViewParam: MovieViewParams) {
-        titleMoviesLabel.text = movieViewParam.originalTitle
+        titleMoviesLabel.text = movieViewParam.title
         releaseDateMoviesLabel.text = movieViewParam.releaseDate
         moviesOverviewLabel.text = movieViewParam.overview
         moviesImageView.loadUrl("https://image.tmdb.org/t/p/w500" + movieViewParam.posterPath)

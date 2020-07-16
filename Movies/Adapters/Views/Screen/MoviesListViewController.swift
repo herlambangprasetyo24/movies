@@ -34,6 +34,11 @@ class MoviesListViewController: UIViewController {
         
     }
     
+    private func setupTable() {
+        moviesListTableView.estimatedRowHeight = 250
+        moviesListTableView.rowHeight = UITableView.automaticDimension
+    }
+    
     private func setupEvent() {
         moviesListViewModel.rxEventLoadMovies
             .subscribe(onNext: { [weak self] in
@@ -70,7 +75,7 @@ extension MoviesListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

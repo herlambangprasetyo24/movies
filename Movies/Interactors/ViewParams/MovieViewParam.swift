@@ -10,6 +10,7 @@ import Foundation
 
 class MovieViewParams {
     var posterPath = ""
+    var title = ""
     var originalTitle = ""
     var overview = ""
     var releaseDate = ""
@@ -19,6 +20,7 @@ class MovieViewParams {
         
         let movieViewParams = MovieViewParams()
         movieViewParams.posterPath = movie.posterPath
+        movieViewParams.title = movie.title
         movieViewParams.originalTitle = movie.originalTitle
         movieViewParams.overview = movie.overview
         movieViewParams.releaseDate = movie.releaseDate

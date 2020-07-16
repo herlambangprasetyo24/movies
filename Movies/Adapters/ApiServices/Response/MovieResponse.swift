@@ -12,6 +12,7 @@ import ObjectMapper
 class MovieResponse: Mappable {
     
     var posterPath = ""
+    var title = ""
     var originalTitle = ""
     var overview = ""
     var releaseDate = ""
@@ -23,6 +24,7 @@ class MovieResponse: Mappable {
     
     func mapping(map: Map) {
         posterPath <- map["poster_path"]
+        title <- map["title"]
         originalTitle <- map["original_title"]
         overview <- map["overview"]
         releaseDate <- map["release_date"]
@@ -32,6 +34,7 @@ class MovieResponse: Mappable {
     func toMovie() -> Movie {
         let movie = Movie()
         movie.posterPath = posterPath
+        movie.title = title
         movie.originalTitle = originalTitle
         movie.overview = overview
         movie.releaseDate = releaseDate
