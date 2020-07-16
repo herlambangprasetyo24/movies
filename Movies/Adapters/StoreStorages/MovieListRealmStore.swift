@@ -29,7 +29,7 @@ class MovieListRealmStore: MovieListStore {
     
     func delete(movieId: Int) {
         try! realm.write {
-            realm.delete(realm.objects(MovieDetail.self).filter { $0.id == movieId })
+            realm.delete(realm.objects(MovieDetail.self).filter("id = \(movieId)").first ?? MovieDetail())
         }
     }
     

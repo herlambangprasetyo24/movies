@@ -42,6 +42,14 @@ class MovieDetailViewModel {
         self.movieId = movieId
     }
     
+    func manageFavouriteButton() {
+        if movieDetailViewParams.isFavourite {
+            deleteFromFavourite()
+        } else {
+            saveToFavourite()
+        }
+    }
+    
     func saveToFavourite() {
         movieDetailViewParams.isFavourite = true
         displayMovie.saveMovieFavourite(movieDetailViewParam: movieDetailViewParams)
@@ -49,7 +57,7 @@ class MovieDetailViewModel {
     }
     
     func deleteFromFavourite() {
-        movieDetailViewParams.isFavourite = true
+        movieDetailViewParams.isFavourite = false
         displayMovie.deleteFavouriteMovie(movieId: movieDetailViewParams.id)
         eventUpdateFavouriteButton.onNext(())
     }

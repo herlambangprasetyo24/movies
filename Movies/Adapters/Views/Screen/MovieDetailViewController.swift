@@ -91,8 +91,9 @@ extension MovieDetailViewController: UITableViewDelegate, UITableViewDataSource 
         if indexPath.section == 0 {
             let moviesCell = tableView.dequeueReusableCell(withIdentifier: MoviesInformationTableViewCell.cellReuseIdentifier()) as! MoviesInformationTableViewCell
             moviesCell.setupUI(movieDetailViewParams: movieDetailViewModel.movieDetailViewParams)
-            moviesCell.set(onSelectFavouriteMovie: {
-                self.movieDetailViewModel.saveToFavourite()
+            moviesCell.set(onSelectFavouriteMovie: { [weak self] in
+                guard let weakSelf = self else { return }
+                weakSelf.movieDetailViewModel.manageFavouriteButton()
             })
             return moviesCell
         } else if indexPath.section == 1 {
