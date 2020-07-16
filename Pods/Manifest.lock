@@ -1,0 +1,114 @@
+PODS:
+  - Alamofire (4.9.1)
+  - MaterialComponents/Availability (108.0.0)
+  - MaterialComponents/BottomSheet (108.0.0):
+    - MaterialComponents/Elevation
+    - MaterialComponents/private/KeyboardWatcher
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/ShapeLibrary
+    - MaterialComponents/Shapes
+  - "MaterialComponents/BottomSheet+ShapeThemer (108.0.0)":
+    - MaterialComponents/BottomSheet
+    - MaterialComponents/schemes/Shape
+  - MaterialComponents/Elevation (108.0.0):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/private/Application (108.0.0)
+  - MaterialComponents/private/Color (108.0.0):
+    - MaterialComponents/Availability
+  - MaterialComponents/private/KeyboardWatcher (108.0.0):
+    - MaterialComponents/private/Application
+  - MaterialComponents/private/Math (108.0.0)
+  - MaterialComponents/schemes/Shape (108.0.0):
+    - MaterialComponents/ShapeLibrary
+    - MaterialComponents/Shapes
+  - MaterialComponents/ShadowElevations (108.0.0)
+  - MaterialComponents/ShadowLayer (108.0.0):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/ShapeLibrary (108.0.0):
+    - MaterialComponents/private/Math
+    - MaterialComponents/Shapes
+  - MaterialComponents/Shapes (108.0.0):
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+  - ObjectMapper (3.5.1)
+  - Realm (3.17.0):
+    - Realm/Headers (= 3.17.0)
+  - Realm/Headers (3.17.0)
+  - RealmSwift (3.17.0):
+    - Realm (= 3.17.0)
+  - RxAlamofire (5.1.0):
+    - RxAlamofire/Core (= 5.1.0)
+  - RxAlamofire/Core (5.1.0):
+    - Alamofire (~> 4.8)
+    - RxSwift (~> 5.0)
+  - RxAtomic (4.4.2)
+  - RxBlocking (5.1.1):
+    - RxSwift (~> 5)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - SDWebImage (5.1.1):
+    - SDWebImage/Core (= 5.1.1)
+  - SDWebImage/Core (5.1.1)
+  - Swinject (2.6.2)
+  - SwinjectStoryboard (2.2.0):
+    - Swinject (~> 2.6)
+
+DEPENDENCIES:
+  - MaterialComponents/BottomSheet (= 108.0.0)
+  - "MaterialComponents/BottomSheet+ShapeThemer (= 108.0.0)"
+  - ObjectMapper (= 3.5.1)
+  - RealmSwift (= 3.17.0)
+  - RxAlamofire (= 5.1.0)
+  - RxAtomic (= 4.4.2)
+  - RxBlocking (= 5.1.1)
+  - RxCocoa (= 5.1.1)
+  - RxSwift (= 5.1.1)
+  - SDWebImage (= 5.1.1)
+  - Swinject (= 2.6.2)
+  - SwinjectStoryboard (= 2.2.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - MaterialComponents
+    - ObjectMapper
+    - Realm
+    - RealmSwift
+    - RxAlamofire
+    - RxAtomic
+    - RxBlocking
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SDWebImage
+    - Swinject
+    - SwinjectStoryboard
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  MaterialComponents: 5ce7930b30fafd4c1ba402abf8e460dbde90cb94
+  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  Realm: b30db41ff34fc858ffc25ba8d44a82c164e7ccd0
+  RealmSwift: fe733e459d60dc7b6971d4cbee2eb4854097d12c
+  RxAlamofire: a2d7621de4c23a0c6e7b476b504acc32838ee341
+  RxAtomic: d00e97c10db88c6f08540e0bf2752fc5a2404167
+  RxBlocking: 5f700a78cad61ce253ebd37c9a39b5ccc76477b4
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
+  Swinject: cf7458774b1b00323080a9c67e47a1ee7f9d2af1
+  SwinjectStoryboard: 32512ef16c2b0ff5b8f823b23539c4a50f6d3383
+
+PODFILE CHECKSUM: 0ca1597a8cec133d3d679dcb615e92769bb92829
+
+COCOAPODS: 1.8.4
