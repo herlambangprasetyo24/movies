@@ -30,8 +30,8 @@ class MoviesListViewModel {
         getMovies()
     }
     
-    private func getMovies() {
-        displayMovie.getMovies()
+    func getMovies(path: String = "popular") {
+        displayMovie.getMovies(path: path)
             .subscribe(onSuccess: { [weak self] moviesViewParam in
                 guard let weakSelf = self else { return }
                 weakSelf.moviesViewParam = moviesViewParam

@@ -10,9 +10,16 @@ import UIKit
 
 class BottomSheetCategoryViewController: UIViewController {
     
+    typealias NextButtonTapClosure = (String) -> Void
+    
     @IBOutlet weak var tableView: UITableView!
     
     private var bottomSheetTitleTableViewCell: BottomSheetTitleTableViewCell!
+    
+    
+    private var onSelectCategory: NextButtonTapClosure = { _ in
+        //Nothing to do!?
+    }
     
     class func create() -> BottomSheetCategoryViewController {
         let storyboard = UIStoryboard(name: "BottomSheet", bundle: nil)
@@ -26,22 +33,14 @@ class BottomSheetCategoryViewController: UIViewController {
         setupTable()
     }
     
+    func set(onSelectCategory: @escaping NextButtonTapClosure) {
+        self.onSelectCategory = onSelectCategory
+    }
+    
     private func setupTable() {
         tableView.estimatedRowHeight = 30
         tableView.rowHeight = UITableView.automaticDimension
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension BottomSheetCategoryViewController: UITableViewDelegate, UITableViewDataSource {
@@ -62,6 +61,18 @@ extension BottomSheetCategoryViewController: UITableViewDelegate, UITableViewDat
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
+        switch indexPath.row {
+        case 1:
+            onSelectCategory("upcoming")
+        case 2:
+            onSelectCategory("top_rated")
+        case 3:
+            onSelectCategory("now_playing")
+        default:
+            onSelectCategory("popular")
+        }
+        
+        dismiss(animated: true, completion: nil )
     }
     
 }

@@ -18,8 +18,8 @@ class MoviesApiServices: MoviesApi {
         self.apiClient = apiClient
     }
     
-    func getMovies() -> Single<Movies> {
-        return apiClient.getString(url  : "https://api.themoviedb.org/3/movie/popular?api_key=3ccad205be6a95ed811ebffdfb3f8f6f&language=en-US&page=1")
+    func getMovies(path: String) -> Single<Movies> {
+        return apiClient.getString(url: "https://api.themoviedb.org/3/movie/\(path)?api_key=3ccad205be6a95ed811ebffdfb3f8f6f&language=en-US&page=1")
             .map { (success, jsonString)  in
                 Mapper<MoviesListResponse>().map(JSONString: jsonString)?.toMovies() ?? Movies()
         }

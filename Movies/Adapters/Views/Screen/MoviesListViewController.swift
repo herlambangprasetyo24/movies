@@ -47,6 +47,9 @@ class MoviesListViewController: UIViewController {
 
     @IBAction func categoryButtonAction(_ sender: Any) {
         let bottomSheetViewController = BottomSheetCategoryViewController.create()
+        bottomSheetViewController.set { path in
+            self.moviesListViewModel.getMovies(path: path)
+        }
         let mdcBottomSheetController = MDCBottomSheetController(contentViewController: bottomSheetViewController)
         mdcBottomSheetController.view.frame =  CGRect(x: 0, y: 0, width: self.view.frame.width, height: 120)
         mdcBottomSheetController.trackingScrollView = bottomSheetViewController.tableView

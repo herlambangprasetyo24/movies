@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol DisplayMovieProtocol {
-    func getMovies() -> Single<MoviesViewParams>
+    func getMovies(path: String) -> Single<MoviesViewParams>
 }
 
 class DisplayMovie: DisplayMovieProtocol {
@@ -21,8 +21,8 @@ class DisplayMovie: DisplayMovieProtocol {
         self.api = api
     }
     
-    func getMovies() -> Single<MoviesViewParams> {
-        return api.getMovies()
+    func getMovies(path: String) -> Single<MoviesViewParams> {
+        return api.getMovies(path: path)
             .map { [weak self] movies in
                 guard let weakSelf = self else { return MoviesViewParams() }
                 return MoviesViewParams.create(movies: movies)

@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol MoviesApi {
-    func getMovies() -> Single<Movies>
+    func getMovies(path: String) -> Single<Movies>
 }
