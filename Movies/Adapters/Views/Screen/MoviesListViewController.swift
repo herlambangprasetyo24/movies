@@ -24,10 +24,18 @@ class MoviesListViewController: UIViewController {
         super.viewDidLoad()
         registerTableViewCellNib()
         setupEvent()
+        setupTable()
         moviesListViewModel.viewDidLoad()
         self.title = "Movies"
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openMoviesDetailPage" {
+            guard let destinationViewController = segue.destination as? MovieDetailViewController, let movieViewParam = sender as? MovieViewParams else { return }
+            destinationViewController.setMovieAndTitle(movieId: movieViewParam.id, title: movieViewParam.title)
+        }
     }
     
     @IBAction func fovouriteButtonAction(_ sender: Any) {
@@ -35,7 +43,7 @@ class MoviesListViewController: UIViewController {
     }
     
     private func setupTable() {
-        moviesListTableView.estimatedRowHeight = 250
+        moviesListTableView.estimatedRowHeight = 300
         moviesListTableView.rowHeight = UITableView.automaticDimension
     }
     
@@ -44,6 +52,15 @@ class MoviesListViewController: UIViewController {
             .subscribe(onNext: { [weak self] in
                 self?.moviesListTableView.reloadData()
             }).disposed(by: disposeBag)
+        
+        moviesListViewModel.rxEventOpenMoviesDetail
+            .subscribe(onNext: { [weak self] movieViewParams in
+                self?.openMovieDetail(movieViewParams: movieViewParams)
+            }).disposed(by: disposeBag)
+    }
+    
+    private func openMovieDetail(movieViewParams: MovieViewParams) {
+        performSegue(withIdentifier: "openMoviesDetailPage", sender: movieViewParams)
     }
     
     private func registerTableViewCellNib() {
@@ -82,6 +99,10 @@ extension MoviesListViewController: UITableViewDataSource, UITableViewDelegate {
         let moviesCell = tableView.dequeueReusableCell(withIdentifier: MoviesTableViewCell.cellReuseIdentifier()) as! MoviesTableViewCell
         moviesCell.setupUI(movieViewParam: moviesListViewModel.moviesViewParam.movieList[indexPath.row])
         return moviesCell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        moviesListViewModel.openMoviesDetail(index: indexPath.row)
     }
 }
 

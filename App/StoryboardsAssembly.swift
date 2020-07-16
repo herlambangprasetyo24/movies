@@ -17,5 +17,9 @@ class StoryboardsAssembly: Assembly {
         container.storyboardInitCompleted(MoviesListViewController.self) { r, c in
             c.moviesListViewModel = r.resolve(MoviesListViewModel.self)!
         }
+        
+        container.storyboardInitCompleted(MovieDetailViewController.self) { r, c in
+            c.movieDetailViewModel = r.resolve(MovieDetailViewModel.self)!
+        }
     }
 }

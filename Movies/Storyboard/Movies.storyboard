@@ -56,11 +56,47 @@
                     </navigationItem>
                     <connections>
                         <outlet property="moviesListTableView" destination="FMD-tc-Sp2" id="3cX-WK-6aK"/>
+                        <segue destination="5bB-tK-xPG" kind="show" identifier="openMoviesDetailPage" id="XUr-w6-NYG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYT-jH-NKj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1079.7101449275362" y="81.696428571428569"/>
+            <point key="canvasLocation" x="1051" y="80"/>
+        </scene>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="ri0-dt-rY9">
+            <objects>
+                <viewController restorationIdentifier="MovieDetailViewController" storyboardIdentifier="MovieDetailViewController" id="5bB-tK-xPG" customClass="MovieDetailViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HDk-5X-V9l">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4SJ-gf-Wvh">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5bB-tK-xPG" id="lQI-jd-h15"/>
+                                    <outlet property="delegate" destination="5bB-tK-xPG" id="eB2-ZH-3RV"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="4SJ-gf-Wvh" secondAttribute="bottom" id="Dew-Rt-j3Y"/>
+                            <constraint firstItem="4SJ-gf-Wvh" firstAttribute="trailing" secondItem="AYe-eo-9mV" secondAttribute="trailing" id="R5F-fu-8q5"/>
+                            <constraint firstItem="4SJ-gf-Wvh" firstAttribute="top" secondItem="AYe-eo-9mV" secondAttribute="top" id="SjE-vM-MDz"/>
+                            <constraint firstItem="4SJ-gf-Wvh" firstAttribute="leading" secondItem="AYe-eo-9mV" secondAttribute="leading" id="fat-ev-770"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AYe-eo-9mV"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="FaM-za-YnT"/>
+                    <connections>
+                        <outlet property="movieDetailTableView" destination="4SJ-gf-Wvh" id="5A2-ZW-hZz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zad-dk-fsk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1846.376811594203" y="79.6875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZJf-7r-du2">

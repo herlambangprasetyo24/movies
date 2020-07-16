@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MovieReviewTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MovieReviewTableViewCell" rowHeight="91" id="ZMr-1C-9E0" customClass="MovieReviewTableViewCell" customModule="Movies" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="91"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZMr-1C-9E0" id="G1G-58-GxJ">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="91"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDX-fE-wAv">
+                        <rect key="frame" x="8" y="15" width="398" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Wa-6E-Xv3">
+                        <rect key="frame" x="9" y="44" width="397" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="CDX-fE-wAv" firstAttribute="leading" secondItem="G1G-58-GxJ" secondAttribute="leading" constant="8" id="Jdr-ek-CCX"/>
+                    <constraint firstAttribute="trailing" secondItem="3Wa-6E-Xv3" secondAttribute="trailing" constant="8" id="SRX-Uv-G77"/>
+                    <constraint firstAttribute="trailing" secondItem="CDX-fE-wAv" secondAttribute="trailing" constant="8" id="c5d-Ez-KPi"/>
+                    <constraint firstItem="3Wa-6E-Xv3" firstAttribute="leading" secondItem="G1G-58-GxJ" secondAttribute="leading" constant="9" id="r4h-Cs-0S9"/>
+                    <constraint firstItem="CDX-fE-wAv" firstAttribute="top" secondItem="G1G-58-GxJ" secondAttribute="top" constant="15" id="xbe-OV-3Wt"/>
+                    <constraint firstItem="3Wa-6E-Xv3" firstAttribute="top" secondItem="CDX-fE-wAv" secondAttribute="bottom" constant="8" id="y1N-9T-BIa"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3Wa-6E-Xv3" secondAttribute="bottom" constant="26" id="z9E-FC-r41"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="authorLabel" destination="CDX-fE-wAv" id="EHf-SK-y8d"/>
+                <outlet property="reviewLabel" destination="3Wa-6E-Xv3" id="vMR-pF-AVo"/>
+            </connections>
+            <point key="canvasLocation" x="-7.2463768115942031" y="41.183035714285715"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -11,4 +11,6 @@ import RxSwift
 
 protocol MoviesApi {
     func getMovies(path: String) -> Single<Movies>
+    func getMoviesDetail(movieId: Int) -> Single<MovieDetail>
+    func getMovieReview(movieId: Int) -> Single<MovieReview>
 }

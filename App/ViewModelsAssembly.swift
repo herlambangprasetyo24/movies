@@ -15,5 +15,9 @@ class ViewModelsAssembly: Assembly {
         container.register(MoviesListViewModel.self) { r in
             MoviesListViewModel(displayMovie: r.resolve(DisplayMovieProtocol.self)!)
         }
+        
+        container.register(MovieDetailViewModel.self) { r in
+            MovieDetailViewModel(displayMovie: r.resolve(DisplayMovieProtocol.self)!)
+        }
     }
 }

@@ -15,9 +15,14 @@ class MoviesListViewModel {
         return eventLoadMovies
     }
     
+    var rxEventOpenMoviesDetail: PublishSubject<MovieViewParams> {
+        return eventOpenMovieDetail
+    }
+    
     var moviesViewParam = MoviesViewParams()
     
     private let eventLoadMovies = PublishSubject<Void>()
+    private let eventOpenMovieDetail = PublishSubject<MovieViewParams>()
     private let displayMovie: DisplayMovieProtocol
     
     private let disposeBag = DisposeBag()
@@ -37,5 +42,9 @@ class MoviesListViewModel {
                 weakSelf.moviesViewParam = moviesViewParam
                 weakSelf.eventLoadMovies.onNext(())
             }).disposed(by: disposeBag)
+    }
+    
+    func openMoviesDetail(index: Int) {
+        eventOpenMovieDetail.onNext(moviesViewParam.movieList[index])
     }
 }

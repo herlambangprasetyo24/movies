@@ -11,6 +11,8 @@ import RxSwift
 
 protocol DisplayMovieProtocol {
     func getMovies(path: String) -> Single<MoviesViewParams>
+    func getMovieDetail(movieId: Int) -> Single<MovieDetailViewParams>
+    func getMovieReview(movieId: Int) -> Single<MovieReviewViewParam>
 }
 
 class DisplayMovie: DisplayMovieProtocol {
@@ -23,9 +25,23 @@ class DisplayMovie: DisplayMovieProtocol {
     
     func getMovies(path: String) -> Single<MoviesViewParams> {
         return api.getMovies(path: path)
-            .map { [weak self] movies in
-                guard let weakSelf = self else { return MoviesViewParams() }
+            .map { movies in
                 return MoviesViewParams.create(movies: movies)
+        }
+    }
+    
+    func getMovieDetail(movieId: Int) -> Single<MovieDetailViewParams> {
+        return api.getMoviesDetail(movieId: movieId)
+            .map { movie in
+                return MovieDetailViewParams.create(movieDetail: movie)
+        }
+    }
+    
+    func getMovieReview(movieId: Int) -> Single<MovieReviewViewParam> {
+        return api.getMovieReview(movieId: movieId)
+            .map { movieReview in
+                return MovieReviewViewParam.create(movieReview: movieReview)
+                
         }
     }
 }
