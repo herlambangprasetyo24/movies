@@ -85,7 +85,6 @@ extension MovieDetailViewController: UITableViewDelegate, UITableViewDataSource 
             moviesCell.setupUI(movieDetailViewParams: movieDetailViewModel.movieDetailViewParams)
             moviesCell.set(onSelectFavouriteMovie: {
                 self.movieDetailViewModel.saveToFavourite()
-                self.movieDetailViewModel.getFavourite()
             })
             return moviesCell
         } else if indexPath.section == 1 {

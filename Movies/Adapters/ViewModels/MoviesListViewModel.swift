@@ -9,6 +9,12 @@
 import Foundation
 import RxSwift
 
+enum PageType {
+    
+    case MoviesList
+    case FavouriteList
+}
+
 class MoviesListViewModel {
     
     var rxEventLoadMovies: PublishSubject<Void> {
@@ -18,11 +24,17 @@ class MoviesListViewModel {
     var rxEventOpenMoviesDetail: PublishSubject<MovieDetailViewParams> {
         return eventOpenMovieDetail
     }
+    var rxEventShowHideCategoryButton: PublishSubject<Bool> {
+        return eventShowHideCategoryButton
+    }
     
     var moviesViewParam = MoviesViewParams()
     
+    private var pageType: PageType = .MoviesList
+    
     private let eventLoadMovies = PublishSubject<Void>()
     private let eventOpenMovieDetail = PublishSubject<MovieDetailViewParams>()
+    private let eventShowHideCategoryButton = PublishSubject<Bool>()
     private let displayMovie: DisplayMovieProtocol
     
     private let disposeBag = DisposeBag()
@@ -32,10 +44,32 @@ class MoviesListViewModel {
     }
     
     func viewDidLoad() {
-        getMovies()
+        if pageType == .MoviesList {
+            getMoviesFromServer()
+        } else {
+            getFafouriteMoviesList()
+        }
+        showHideCategoryButton()
     }
     
-    func getMovies(path: String = "popular") {
+    func setPageType(pageType: PageType) {
+        self.pageType = pageType
+    }
+    
+    func getPageType() -> PageType {
+        return pageType
+    }
+    
+    func getFafouriteMoviesList() {
+        displayMovie.getMovieFavourite()
+            .subscribe(onSuccess: { [weak self] moviesViewParam in
+                guard let weakSelf = self else { return }
+                weakSelf.moviesViewParam = moviesViewParam
+                weakSelf.eventLoadMovies.onNext(())
+            }).disposed(by: disposeBag)
+    }
+    
+    func getMoviesFromServer(path: String = "popular") {
         displayMovie.getMovies(path: path)
             .subscribe(onSuccess: { [weak self] moviesViewParam in
                 guard let weakSelf = self else { return }
@@ -46,5 +80,9 @@ class MoviesListViewModel {
     
     func openMoviesDetail(index: Int) {
         eventOpenMovieDetail.onNext(moviesViewParam.movieList[index])
+    }
+    
+    private func showHideCategoryButton() {
+        eventShowHideCategoryButton.onNext(pageType == .MoviesList)
     }
 }

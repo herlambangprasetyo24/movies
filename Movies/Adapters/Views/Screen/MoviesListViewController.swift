@@ -15,6 +15,7 @@ class MoviesListViewController: UIViewController {
     @IBOutlet weak var moviesListTableView: UITableView!
     @IBOutlet weak var favouriteButton: UIBarButtonItem!
     @IBOutlet weak var categoryButton: UIButton!
+    @IBOutlet weak var categoryButtonHeightConstraint: NSLayoutConstraint!
     
     var moviesListViewModel: MoviesListViewModel!
     
@@ -26,7 +27,7 @@ class MoviesListViewController: UIViewController {
         setupEvent()
         setupTable()
         moviesListViewModel.viewDidLoad()
-        self.title = "Movies"
+        setPageTitle()
 
         // Do any additional setup after loading the view.
     }
@@ -38,8 +39,18 @@ class MoviesListViewController: UIViewController {
         }
     }
     
-    @IBAction func fovouriteButtonAction(_ sender: Any) {
+    private func setPageTitle() {
+        let pageType = moviesListViewModel.getPageType()
+        if pageType == .MoviesList {
+            self.title = "Movies"
+        } else {
+            self.title = "Favourite Movies"
+        }
         
+    }
+    
+    private func setupPageType(pageType: PageType) {
+        moviesListViewModel.setPageType(pageType: pageType)
     }
     
     private func setupTable() {
@@ -57,6 +68,19 @@ class MoviesListViewController: UIViewController {
             .subscribe(onNext: { [weak self] movieDetailViewParams in
                 self?.openMovieDetail(movieDetailViewParams: movieDetailViewParams)
             }).disposed(by: disposeBag)
+        
+        moviesListViewModel.rxEventShowHideCategoryButton
+            .subscribe(onNext: { [weak self] show in
+                guard let weakSelf = self else { return }
+                weakSelf.showHideButton(show: show)
+            }).disposed(by: disposeBag)
+    }
+    
+    private func showHideButton(show: Bool) {
+        categoryButtonHeightConstraint.constant = show ? 43 : 0
+        categoryButton.isHidden = !show
+        favouriteButton.isEnabled = show
+        favouriteButton.tintColor = show ? nil : .clear
     }
     
     private func openMovieDetail(movieDetailViewParams: MovieDetailViewParams) {
@@ -70,7 +94,7 @@ class MoviesListViewController: UIViewController {
     @IBAction func categoryButtonAction(_ sender: Any) {
         let bottomSheetViewController = BottomSheetCategoryViewController.create()
         bottomSheetViewController.set { path in
-            self.moviesListViewModel.getMovies(path: path)
+            self.moviesListViewModel.getMoviesFromServer(path: path)
         }
         let mdcBottomSheetController = MDCBottomSheetController(contentViewController: bottomSheetViewController)
         mdcBottomSheetController.view.frame =  CGRect(x: 0, y: 0, width: self.view.frame.width, height: 120)
@@ -79,6 +103,12 @@ class MoviesListViewController: UIViewController {
         DispatchQueue.main.async {
             self.navigationController?.present(mdcBottomSheetController, animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func fovouriteButtonAction(_ sender: Any) {
+        guard let destinationViewController = storyboard?.instantiateViewController(identifier: "MoviesListViewController") as? MoviesListViewController else { return }
+        destinationViewController.setupPageType(pageType: .FavouriteList)
+        navigationController?.pushViewController(destinationViewController, animated: true)
     }
 }
 
