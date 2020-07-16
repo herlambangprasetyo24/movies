@@ -15,12 +15,17 @@ class MovieDetailViewModel {
         return eventLoadMovieDetail
     }
     
+    var rxEventUpdateFavouriteButton: PublishSubject<Void> {
+        return eventUpdateFavouriteButton
+    }
+    
     var movieDetailViewParams = MovieDetailViewParams()
     var movieReviewViewParams = MovieReviewViewParam()
     
     private var movieId = 0
     
     private let eventLoadMovieDetail = PublishSubject<Void>()
+    private let eventUpdateFavouriteButton = PublishSubject<Void>()
     private let displayMovie: DisplayMovieProtocol
     
     private let disposeBag = DisposeBag()
@@ -38,7 +43,15 @@ class MovieDetailViewModel {
     }
     
     func saveToFavourite() {
+        movieDetailViewParams.isFavourite = true
         displayMovie.saveMovieFavourite(movieDetailViewParam: movieDetailViewParams)
+        eventUpdateFavouriteButton.onNext(())
+    }
+    
+    func deleteFromFavourite() {
+        movieDetailViewParams.isFavourite = true
+        displayMovie.deleteFavouriteMovie(movieId: movieDetailViewParams.id)
+        eventUpdateFavouriteButton.onNext(())
     }
     
     private func getMovieDetail() {

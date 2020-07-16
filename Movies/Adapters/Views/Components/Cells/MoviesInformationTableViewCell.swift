@@ -17,7 +17,9 @@ class MoviesInformationTableViewCell: UITableViewCell {
     @IBOutlet weak var movieReleaseDate: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var movieOverviewLabel: UILabel!
+    @IBOutlet weak var favouriteButton: UIButton!
     
+    private var movieDetailViewParams = MovieDetailViewParams()
     private var onSelectFavouriteMovie: SelectFavouriteMovieClosure = { }
     
     override func awakeFromNib() {
@@ -38,11 +40,18 @@ class MoviesInformationTableViewCell: UITableViewCell {
     }
     
     func setupUI(movieDetailViewParams: MovieDetailViewParams) {
+        self.movieDetailViewParams = movieDetailViewParams
         movieImageView.loadUrl("https://image.tmdb.org/t/p/w500" + movieDetailViewParams.backdropPath)
         movieTitleLabel.text = movieDetailViewParams.title
         movieReleaseDate.text = "Release: \(movieDetailViewParams.releaseDate)"
         movieRatingLabel.text = "Rating: \(movieDetailViewParams.voteAverage)"
         movieOverviewLabel.text = movieDetailViewParams.overview
+        setFavouriteButtonTitle()
+    }
+    
+    private func setFavouriteButtonTitle() {
+        let title = movieDetailViewParams.isFavourite ? "UnFavourite" : "Favourite"
+        favouriteButton.setTitle(title, for: .normal)
     }
 
     @IBAction func favouriteButtonAction(_ sender: Any) {

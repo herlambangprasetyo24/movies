@@ -102,6 +102,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="favouriteButton" destination="d2g-9g-aMB" id="heT-DK-WTf"/>
                 <outlet property="movieImageView" destination="yKG-LR-5AC" id="kMs-Ih-uLH"/>
                 <outlet property="movieOverviewLabel" destination="bxS-nq-DXL" id="JpK-Pc-gJ9"/>
                 <outlet property="movieRatingLabel" destination="3P5-7m-JfK" id="DpF-tV-K9e"/>

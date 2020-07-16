@@ -14,6 +14,7 @@ protocol MovieListStore {
     
     func save(movie: MovieDetail)
     func getMovies() -> [MovieDetail]
+    func getMovie(movieId: Int) -> MovieDetail?
     func delete(movieId: Int)
     func write(writeBlock: () -> Void)
     

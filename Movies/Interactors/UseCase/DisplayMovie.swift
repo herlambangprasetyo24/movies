@@ -15,6 +15,7 @@ protocol DisplayMovieProtocol {
     func getMovieReview(movieId: Int) -> Single<MovieReviewViewParam>
     func saveMovieFavourite(movieDetailViewParam: MovieDetailViewParams)
     func getMovieFavourite() -> Single<MoviesViewParams>
+    func deleteFavouriteMovie(movieId: Int)
 }
 
 class DisplayMovie: DisplayMovieProtocol {
@@ -35,10 +36,27 @@ class DisplayMovie: DisplayMovieProtocol {
     }
     
     func getMovieDetail(movieId: Int) -> Single<MovieDetailViewParams> {
+        guard let movieDetailFromCache = getMovieDetailFromCache(movieId: movieId) else {
+            return getMovieDetailFromServer(movieId: movieId)
+        }
+        let movieDetailFromServer = getMovieDetailFromServer(movieId: movieId)
+        
+        return Single.zip(movieDetailFromCache, movieDetailFromServer, resultSelector: { result,_ in
+            return result
+        })
+    }
+    
+    func getMovieDetailFromServer(movieId: Int) -> Single<MovieDetailViewParams> {
         return api.getMoviesDetail(movieId: movieId)
             .map { movie in
                 return MovieDetailViewParams.create(movieDetail: movie)
         }
+    }
+    
+    func getMovieDetailFromCache(movieId: Int) -> Single<MovieDetailViewParams>? {
+        guard let movieDetail = movieListStore.getMovie(movieId: movieId) else { return nil }
+        let movieDetailViewParams = MovieDetailViewParams.create(movieDetail: movieDetail)
+        return Single.just(movieDetailViewParams)
     }
     
     func getMovieReview(movieId: Int) -> Single<MovieReviewViewParam> {
@@ -61,5 +79,9 @@ class DisplayMovie: DisplayMovieProtocol {
         }
         
         return Single.just(moviesViewParams)
+    }
+    
+    func deleteFavouriteMovie(movieId: Int) {
+        movieListStore.delete(movieId: movieId)
     }
 }

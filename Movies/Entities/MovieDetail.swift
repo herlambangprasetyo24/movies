@@ -18,6 +18,7 @@ class MovieDetail: Object {
     @objc dynamic var overview = ""
     @objc dynamic var releaseDate = ""
     @objc dynamic var voteAverage = 0.0
+    @objc dynamic var isFavourite = false
     
     override class func primaryKey() -> String? {
         return "id"

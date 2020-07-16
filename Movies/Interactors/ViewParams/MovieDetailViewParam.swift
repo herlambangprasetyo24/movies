@@ -18,6 +18,7 @@ class MovieDetailViewParams {
     var overview = ""
     var releaseDate = ""
     var voteAverage = 0.0
+    var isFavourite = false
     
     static func create(movieDetail: MovieDetail) -> MovieDetailViewParams {
         
@@ -30,6 +31,7 @@ class MovieDetailViewParams {
         movieDetailViewParams.overview = movieDetail.overview
         movieDetailViewParams.releaseDate = movieDetail.releaseDate
         movieDetailViewParams.voteAverage = movieDetail.voteAverage
+        movieDetailViewParams.isFavourite = movieDetail.isFavourite
         
         return movieDetailViewParams
     }
@@ -45,6 +47,7 @@ class MovieDetailViewParams {
         movieDetail.overview = movieDetailViewParams.overview
         movieDetail.releaseDate = movieDetailViewParams.releaseDate
         movieDetail.voteAverage = movieDetailViewParams.voteAverage
+        movieDetail.isFavourite = movieDetailViewParams.isFavourite
         
         return movieDetail
     }

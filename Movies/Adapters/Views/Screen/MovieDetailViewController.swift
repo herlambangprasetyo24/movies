@@ -45,10 +45,18 @@ class MovieDetailViewController: UIViewController {
     }
     
     private func setupViewModel() {
-        movieDetailViewModel.rxEventLoadMovieDetail.subscribe(onNext: { [weak self] in
-            guard let weakSelf = self else { return }
-            weakSelf.movieDetailTableView.reloadData()
-        }).disposed(by: disposeBag)
+        movieDetailViewModel.rxEventLoadMovieDetail
+            .subscribe(onNext: { [weak self] in
+                guard let weakSelf = self else { return }
+                weakSelf.movieDetailTableView.reloadData()
+            }).disposed(by: disposeBag)
+        
+        movieDetailViewModel.rxEventUpdateFavouriteButton
+            .subscribe(onNext: { [weak self] isFavourite in
+                guard let weakSelf = self else { return }
+                weakSelf.movieDetailTableView.reloadData()
+            }).disposed(by: disposeBag)
+        
     }
     
     private func setupTable() {
