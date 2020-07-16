@@ -31,7 +31,6 @@
                                 <state key="normal" title="Category"/>
                                 <connections>
                                     <action selector="categoryButtonAction:" destination="MZY-wY-RCo" eventType="touchUpInside" id="ANy-A6-OWK"/>
-                                    <action selector="fovouriteButtonAction:" destination="MZY-wY-RCo" eventType="touchUpInside" id="qEA-By-pVD"/>
                                 </connections>
                             </button>
                         </subviews>
