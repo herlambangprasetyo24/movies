@@ -26,20 +26,8 @@ class BottomSheetCategoryViewController: UIViewController {
         setupTable()
     }
     
-    func updateFrameSize() {
-        self.view.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: self.view.frame.width, height: getFrameHeight())
-        tableView.reloadData()
-        tableView.beginUpdates()
-        tableView.endUpdates()
-    }
-    
-    private func getFrameHeight() -> CGFloat {
-        guard let bottomSheetTitleTableViewCell = bottomSheetTitleTableViewCell else { return 0.0 }
-        return bottomSheetTitleTableViewCell.stckView.frame.height
-    }
-    
     private func setupTable() {
-        tableView.estimatedRowHeight = 110.0
+        tableView.estimatedRowHeight = 30
         tableView.rowHeight = UITableView.automaticDimension
     }
     
@@ -63,18 +51,17 @@ extension BottomSheetCategoryViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return categoryList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: BottomSheetTitleTableViewCell.cellReuseIdentifier(), for: indexPath) as? BottomSheetTitleTableViewCell else { return UITableViewCell() }
-        bottomSheetTitleTableViewCell = cell
-        return bottomSheetTitleTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "bottomSheetTitleTableViewCell", for: indexPath)
+        cell.textLabel?.text = categoryList[indexPath.row]
+        return cell
     }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let bottomSheetTitleTableViewCell = bottomSheetTitleTableViewCell else { return UITableView.automaticDimension }
-        return bottomSheetTitleTableViewCell.stckView.frame.height
+        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
     }
     
 }

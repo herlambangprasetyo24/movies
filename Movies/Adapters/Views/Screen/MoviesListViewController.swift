@@ -31,17 +31,7 @@ class MoviesListViewController: UIViewController {
     }
     
     @IBAction func fovouriteButtonAction(_ sender: Any) {
-        print("lalala")
-        let bottomSheetViewController = BottomSheetCategoryViewController.create()
-        bottomSheetViewController.updateFrameSize()
-        let mdcBottomSheetController = MDCBottomSheetController(contentViewController: bottomSheetViewController)
-        mdcBottomSheetController.view.frame =  bottomSheetViewController.tableView.frame
-        mdcBottomSheetController.trackingScrollView = bottomSheetViewController.tableView
-        mdcBottomSheetController.scrimColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-        DispatchQueue.main.async {
-            self.navigationController?.present(bottomSheetViewController, animated: true, completion: nil)
-            
-        }
+        
     }
     
     private func setupEvent() {
@@ -56,7 +46,14 @@ class MoviesListViewController: UIViewController {
     }
 
     @IBAction func categoryButtonAction(_ sender: Any) {
-        
+        let bottomSheetViewController = BottomSheetCategoryViewController.create()
+        let mdcBottomSheetController = MDCBottomSheetController(contentViewController: bottomSheetViewController)
+        mdcBottomSheetController.view.frame =  CGRect(x: 0, y: 0, width: self.view.frame.width, height: 120)
+        mdcBottomSheetController.trackingScrollView = bottomSheetViewController.tableView
+        mdcBottomSheetController.scrimColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        DispatchQueue.main.async {
+            self.navigationController?.present(mdcBottomSheetController, animated: true, completion: nil)
+        }
     }
 }
 

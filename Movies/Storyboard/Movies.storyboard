@@ -19,8 +19,8 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="694"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="MZY-wY-RCo" id="kdK-b5-DGV"/>
-                                    <outlet property="delegate" destination="MZY-wY-RCo" id="q9L-uJ-CAQ"/>
+                                    <outlet property="dataSource" destination="MZY-wY-RCo" id="Rgu-z7-tUs"/>
+                                    <outlet property="delegate" destination="MZY-wY-RCo" id="uqv-ta-VFl"/>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x68-fl-DBm">
@@ -30,6 +30,7 @@
                                 </constraints>
                                 <state key="normal" title="Category"/>
                                 <connections>
+                                    <action selector="categoryButtonAction:" destination="MZY-wY-RCo" eventType="touchUpInside" id="ANy-A6-OWK"/>
                                     <action selector="fovouriteButtonAction:" destination="MZY-wY-RCo" eventType="touchUpInside" id="qEA-By-pVD"/>
                                 </connections>
                             </button>
@@ -47,7 +48,11 @@
                         <viewLayoutGuide key="safeArea" id="vhy-CZ-BUZ"/>
                     </view>
                     <navigationItem key="navigationItem" id="aQf-pm-jQB">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="eHh-NY-gAW"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="eHh-NY-gAW">
+                            <connections>
+                                <action selector="fovouriteButtonAction:" destination="MZY-wY-RCo" id="6w7-cP-38x"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="moviesListTableView" destination="FMD-tc-Sp2" id="3cX-WK-6aK"/>
