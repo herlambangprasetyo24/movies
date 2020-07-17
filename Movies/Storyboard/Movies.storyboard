@@ -23,9 +23,26 @@
                                     <outlet property="delegate" destination="MZY-wY-RCo" id="uqv-ta-VFl"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhG-zR-WUj">
+                                <rect key="frame" x="0.0" y="88" width="414" height="734"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Don't Have Favourite Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1v-ic-ajS">
+                                        <rect key="frame" x="74" y="356.5" width="266" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="c1v-ic-ajS" firstAttribute="centerY" secondItem="zhG-zR-WUj" secondAttribute="centerY" id="C64-RX-6YB"/>
+                                    <constraint firstItem="c1v-ic-ajS" firstAttribute="centerX" secondItem="zhG-zR-WUj" secondAttribute="centerX" id="uxK-xN-vLo"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x68-fl-DBm">
                                 <rect key="frame" x="182" y="822" width="50" height="40"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="RX0-2Y-UKL"/>
                                     <constraint firstAttribute="height" constant="40" id="muk-dC-NVG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -39,13 +56,16 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="x68-fl-DBm" firstAttribute="leading" secondItem="vhy-CZ-BUZ" secondAttribute="leading" constant="182" id="0rG-eA-KL7"/>
+                            <constraint firstItem="x68-fl-DBm" firstAttribute="centerX" secondItem="zhG-zR-WUj" secondAttribute="centerX" id="46j-CK-aJs"/>
+                            <constraint firstItem="zhG-zR-WUj" firstAttribute="trailing" secondItem="vhy-CZ-BUZ" secondAttribute="trailing" id="9cz-tk-MR7"/>
                             <constraint firstItem="FMD-tc-Sp2" firstAttribute="top" secondItem="vhy-CZ-BUZ" secondAttribute="top" id="E8R-xA-ql2"/>
+                            <constraint firstItem="zhG-zR-WUj" firstAttribute="leading" secondItem="vhy-CZ-BUZ" secondAttribute="leading" id="IcC-Ic-3ay"/>
+                            <constraint firstItem="zhG-zR-WUj" firstAttribute="top" secondItem="vhy-CZ-BUZ" secondAttribute="top" id="J7i-uQ-fLI"/>
                             <constraint firstItem="FMD-tc-Sp2" firstAttribute="trailing" secondItem="vhy-CZ-BUZ" secondAttribute="trailing" id="Lub-Ad-zuv"/>
-                            <constraint firstItem="vhy-CZ-BUZ" firstAttribute="trailing" secondItem="x68-fl-DBm" secondAttribute="trailing" constant="182" id="RkW-RS-6ew"/>
                             <constraint firstItem="FMD-tc-Sp2" firstAttribute="leading" secondItem="vhy-CZ-BUZ" secondAttribute="leading" id="dTh-eJ-pUn"/>
                             <constraint firstItem="x68-fl-DBm" firstAttribute="bottom" secondItem="vhy-CZ-BUZ" secondAttribute="bottom" id="ij5-yt-X52"/>
                             <constraint firstItem="x68-fl-DBm" firstAttribute="top" secondItem="FMD-tc-Sp2" secondAttribute="bottom" id="oU5-RS-0SF"/>
+                            <constraint firstItem="x68-fl-DBm" firstAttribute="top" secondItem="zhG-zR-WUj" secondAttribute="bottom" id="qxD-b0-anR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vhy-CZ-BUZ"/>
                     </view>
@@ -61,6 +81,7 @@
                     <connections>
                         <outlet property="categoryButton" destination="x68-fl-DBm" id="JZN-Xt-P83"/>
                         <outlet property="categoryButtonHeightConstraint" destination="muk-dC-NVG" id="wjO-MG-mu9"/>
+                        <outlet property="emptyView" destination="zhG-zR-WUj" id="NDh-S0-yvt"/>
                         <outlet property="favouriteButton" destination="eHh-NY-gAW" id="6hg-7T-ee9"/>
                         <outlet property="moviesListTableView" destination="FMD-tc-Sp2" id="3cX-WK-6aK"/>
                         <segue destination="5bB-tK-xPG" kind="show" identifier="openMoviesDetailPage" id="XUr-w6-NYG"/>

@@ -16,6 +16,7 @@ class MoviesListViewController: UIViewController {
     @IBOutlet weak var favouriteButton: UIBarButtonItem!
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var categoryButtonHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var emptyView: UIView!
     
     var moviesListViewModel: MoviesListViewModel!
     
@@ -27,8 +28,6 @@ class MoviesListViewController: UIViewController {
         setupEvent()
         setupTable()
         setPageTitle()
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,10 +40,6 @@ class MoviesListViewController: UIViewController {
             guard let destinationViewController = segue.destination as? MovieDetailViewController, let movieDetailViewParams = sender as? MovieDetailViewParams else { return }
             destinationViewController.setMovieAndTitle(movieId: movieDetailViewParams.id, title: movieDetailViewParams.title)
         }
-    }
-    
-    private func setupBarButtonItem() {
-        
     }
     
     private func setPageTitle() {
@@ -69,7 +64,7 @@ class MoviesListViewController: UIViewController {
     private func setupEvent() {
         moviesListViewModel.rxEventLoadMovies
             .subscribe(onNext: { [weak self] in
-                self?.moviesListTableView.reloadData()
+                self?.updateUI()
             }).disposed(by: disposeBag)
         
         moviesListViewModel.rxEventOpenMoviesDetail
@@ -82,6 +77,20 @@ class MoviesListViewController: UIViewController {
                 guard let weakSelf = self else { return }
                 weakSelf.showHideButton(show: show)
             }).disposed(by: disposeBag)
+    }
+    
+    private func updateUI() {
+        if moviesListViewModel.getPageType() == .FavouriteList {
+            if moviesListViewModel.moviesViewParam.movieList.isEmpty {
+                emptyView.isHidden = false
+            } else {
+                emptyView.isHidden = true
+                moviesListTableView.reloadData()
+            }
+        } else {
+            emptyView.isHidden = true
+            moviesListTableView.reloadData()
+        }
     }
     
     private func showHideButton(show: Bool) {
