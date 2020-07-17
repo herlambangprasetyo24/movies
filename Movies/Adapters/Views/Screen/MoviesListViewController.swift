@@ -26,10 +26,14 @@ class MoviesListViewController: UIViewController {
         registerTableViewCellNib()
         setupEvent()
         setupTable()
-        moviesListViewModel.viewDidLoad()
         setPageTitle()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        moviesListViewModel.viewWillAppear()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

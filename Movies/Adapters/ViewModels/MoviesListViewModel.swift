@@ -43,13 +43,8 @@ class MoviesListViewModel {
         self.displayMovie = displayMovie
     }
     
-    func viewDidLoad() {
-        if pageType == .MoviesList {
-            getMoviesFromServer()
-        } else {
-            getFafouriteMoviesList()
-        }
-        showHideCategoryButton()
+    func viewWillAppear() {
+        getMoviesListData()
     }
     
     func setPageType(pageType: PageType) {
@@ -58,15 +53,6 @@ class MoviesListViewModel {
     
     func getPageType() -> PageType {
         return pageType
-    }
-    
-    func getFafouriteMoviesList() {
-        displayMovie.getMovieFavourite()
-            .subscribe(onSuccess: { [weak self] moviesViewParam in
-                guard let weakSelf = self else { return }
-                weakSelf.moviesViewParam = moviesViewParam
-                weakSelf.eventLoadMovies.onNext(())
-            }).disposed(by: disposeBag)
     }
     
     func getMoviesFromServer(path: String = "popular") {
@@ -80,6 +66,24 @@ class MoviesListViewModel {
     
     func openMoviesDetail(index: Int) {
         eventOpenMovieDetail.onNext(moviesViewParam.movieList[index])
+    }
+    
+    private func getMoviesListData() {
+        if pageType == .MoviesList {
+            getMoviesFromServer()
+        } else {
+            getFavouriteMoviesList()
+        }
+        showHideCategoryButton()
+    }
+    
+    private func getFavouriteMoviesList() {
+        displayMovie.getMovieFavourite()
+            .subscribe(onSuccess: { [weak self] moviesViewParam in
+                guard let weakSelf = self else { return }
+                weakSelf.moviesViewParam = moviesViewParam
+                weakSelf.eventLoadMovies.onNext(())
+            }).disposed(by: disposeBag)
     }
     
     private func showHideCategoryButton() {
