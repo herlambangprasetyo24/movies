@@ -61,17 +61,18 @@ extension BottomSheetCategoryViewController: UITableViewDelegate, UITableViewDat
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
+        var movieType = ""
         switch indexPath.row {
         case 1:
-            onSelectCategory("upcoming")
+            movieType = "upcoming"
         case 2:
-            onSelectCategory("top_rated")
+            movieType = "top_rated"
         case 3:
-            onSelectCategory("now_playing")
+            movieType = "now_playing"
         default:
-            onSelectCategory("popular")
+            movieType = "popular"
         }
-        
+        onSelectCategory(movieType)
         dismiss(animated: true, completion: nil )
     }
     
