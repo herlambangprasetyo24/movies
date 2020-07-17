@@ -43,6 +43,10 @@ class MoviesListViewController: UIViewController {
         }
     }
     
+    private func setupBarButtonItem() {
+        
+    }
+    
     private func setPageTitle() {
         let pageType = moviesListViewModel.getPageType()
         if pageType == .MoviesList {
@@ -85,6 +89,7 @@ class MoviesListViewController: UIViewController {
         categoryButton.isHidden = !show
         favouriteButton.isEnabled = show
         favouriteButton.tintColor = show ? nil : .clear
+        favouriteButton.image = show ? UIImage(named: "fav_active") : UIImage()
     }
     
     private func openMovieDetail(movieDetailViewParams: MovieDetailViewParams) {

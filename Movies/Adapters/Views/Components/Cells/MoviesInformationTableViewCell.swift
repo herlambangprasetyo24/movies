@@ -50,8 +50,8 @@ class MoviesInformationTableViewCell: UITableViewCell {
     }
     
     private func setFavouriteButtonTitle() {
-        let title = movieDetailViewParams.isFavourite ? "UnFavourite" : "Favourite"
-        favouriteButton.setTitle(title, for: .normal)
+        let imageName = movieDetailViewParams.isFavourite ? "fav_active" : "fav_inactive"
+        favouriteButton.setImage(UIImage(named: imageName), for: .normal)
     }
 
     @IBAction func favouriteButtonAction(_ sender: Any) {
