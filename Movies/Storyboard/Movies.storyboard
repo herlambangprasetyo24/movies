@@ -16,19 +16,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FMD-tc-Sp2">
-                                <rect key="frame" x="0.0" y="88" width="414" height="731"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="722"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="MZY-wY-RCo" id="Rgu-z7-tUs"/>
                                     <outlet property="delegate" destination="MZY-wY-RCo" id="uqv-ta-VFl"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x68-fl-DBm">
-                                <rect key="frame" x="0.0" y="819" width="414" height="43"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x68-fl-DBm">
+                                <rect key="frame" x="167" y="810" width="80" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="KRe-E3-3kT"/>
+                                    <constraint firstAttribute="height" constant="60" id="muk-dC-NVG"/>
                                 </constraints>
-                                <state key="normal" title="Category"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="titleEdgeInsets" minX="-45" minY="40" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="17" minY="10" maxX="0.0" maxY="20"/>
+                                <state key="normal" title="Category" image="category">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="categoryButtonAction:" destination="MZY-wY-RCo" eventType="touchUpInside" id="ANy-A6-OWK"/>
                                 </connections>
@@ -36,18 +41,20 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="x68-fl-DBm" firstAttribute="leading" secondItem="vhy-CZ-BUZ" secondAttribute="leading" constant="167" id="0rG-eA-KL7"/>
                             <constraint firstItem="FMD-tc-Sp2" firstAttribute="top" secondItem="vhy-CZ-BUZ" secondAttribute="top" id="E8R-xA-ql2"/>
                             <constraint firstItem="FMD-tc-Sp2" firstAttribute="trailing" secondItem="vhy-CZ-BUZ" secondAttribute="trailing" id="Lub-Ad-zuv"/>
-                            <constraint firstItem="x68-fl-DBm" firstAttribute="trailing" secondItem="vhy-CZ-BUZ" secondAttribute="trailing" id="QFC-9b-en2"/>
-                            <constraint firstItem="x68-fl-DBm" firstAttribute="bottom" secondItem="vhy-CZ-BUZ" secondAttribute="bottom" id="byV-Wv-qj4"/>
+                            <constraint firstItem="vhy-CZ-BUZ" firstAttribute="trailing" secondItem="x68-fl-DBm" secondAttribute="trailing" constant="167" id="RkW-RS-6ew"/>
                             <constraint firstItem="FMD-tc-Sp2" firstAttribute="leading" secondItem="vhy-CZ-BUZ" secondAttribute="leading" id="dTh-eJ-pUn"/>
-                            <constraint firstItem="x68-fl-DBm" firstAttribute="top" secondItem="FMD-tc-Sp2" secondAttribute="bottom" id="gIa-Lv-pAb"/>
-                            <constraint firstItem="x68-fl-DBm" firstAttribute="leading" secondItem="vhy-CZ-BUZ" secondAttribute="leading" id="yCu-mq-vle"/>
+                            <constraint firstItem="x68-fl-DBm" firstAttribute="bottom" secondItem="vhy-CZ-BUZ" secondAttribute="bottom" constant="8" id="ij5-yt-X52"/>
+                            <constraint firstItem="x68-fl-DBm" firstAttribute="top" secondItem="FMD-tc-Sp2" secondAttribute="bottom" id="oU5-RS-0SF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vhy-CZ-BUZ"/>
                     </view>
                     <navigationItem key="navigationItem" id="aQf-pm-jQB">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="eHh-NY-gAW">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="fav_active" id="eHh-NY-gAW">
+                            <inset key="imageInsets" minX="0.0" minY="3" maxX="0.0" maxY="0.0"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="fovouriteButtonAction:" destination="MZY-wY-RCo" id="6w7-cP-38x"/>
                             </connections>
@@ -55,7 +62,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="categoryButton" destination="x68-fl-DBm" id="JZN-Xt-P83"/>
-                        <outlet property="categoryButtonHeightConstraint" destination="KRe-E3-3kT" id="Bup-ld-AHh"/>
+                        <outlet property="categoryButtonHeightConstraint" destination="muk-dC-NVG" id="wjO-MG-mu9"/>
                         <outlet property="favouriteButton" destination="eHh-NY-gAW" id="6hg-7T-ee9"/>
                         <outlet property="moviesListTableView" destination="FMD-tc-Sp2" id="3cX-WK-6aK"/>
                         <segue destination="5bB-tK-xPG" kind="show" identifier="openMoviesDetailPage" id="XUr-w6-NYG"/>
@@ -119,4 +126,8 @@
             <point key="canvasLocation" x="169.56521739130437" y="81.696428571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="category" width="45" height="45"/>
+        <image name="fav_active" width="50" height="45"/>
+    </resources>
 </document>

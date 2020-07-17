@@ -81,7 +81,7 @@ class MoviesListViewController: UIViewController {
     }
     
     private func showHideButton(show: Bool) {
-        categoryButtonHeightConstraint.constant = show ? 43 : 0
+        categoryButtonHeightConstraint.constant = show ? 70 : 0
         categoryButton.isHidden = !show
         favouriteButton.isEnabled = show
         favouriteButton.tintColor = show ? nil : .clear
