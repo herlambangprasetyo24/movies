@@ -42,6 +42,10 @@ class MovieDetailViewModel {
         self.movieId = movieId
     }
     
+    func getMovieId() -> Int {
+        return movieId
+    }
+    
     func manageFavouriteButton() {
         if movieDetailViewParams.isFavourite {
             deleteFromFavourite()

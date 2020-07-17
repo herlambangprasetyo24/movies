@@ -65,6 +65,7 @@ class MoviesListViewModel {
     }
     
     func openMoviesDetail(index: Int) {
+        guard !moviesViewParam.movieList.isEmpty, index <= moviesViewParam.movieList.count else { return }
         eventOpenMovieDetail.onNext(moviesViewParam.movieList[index])
     }
     

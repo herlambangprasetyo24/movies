@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FMD-tc-Sp2">
-                                <rect key="frame" x="0.0" y="88" width="414" height="722"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="734"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="MZY-wY-RCo" id="Rgu-z7-tUs"/>
@@ -24,14 +24,12 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x68-fl-DBm">
-                                <rect key="frame" x="167" y="810" width="80" height="60"/>
+                                <rect key="frame" x="182" y="822" width="50" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="muk-dC-NVG"/>
+                                    <constraint firstAttribute="height" constant="40" id="muk-dC-NVG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <inset key="titleEdgeInsets" minX="-45" minY="40" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="17" minY="10" maxX="0.0" maxY="20"/>
-                                <state key="normal" title="Category" image="category">
+                                <state key="normal" image="category">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -41,12 +39,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="x68-fl-DBm" firstAttribute="leading" secondItem="vhy-CZ-BUZ" secondAttribute="leading" constant="167" id="0rG-eA-KL7"/>
+                            <constraint firstItem="x68-fl-DBm" firstAttribute="leading" secondItem="vhy-CZ-BUZ" secondAttribute="leading" constant="182" id="0rG-eA-KL7"/>
                             <constraint firstItem="FMD-tc-Sp2" firstAttribute="top" secondItem="vhy-CZ-BUZ" secondAttribute="top" id="E8R-xA-ql2"/>
                             <constraint firstItem="FMD-tc-Sp2" firstAttribute="trailing" secondItem="vhy-CZ-BUZ" secondAttribute="trailing" id="Lub-Ad-zuv"/>
-                            <constraint firstItem="vhy-CZ-BUZ" firstAttribute="trailing" secondItem="x68-fl-DBm" secondAttribute="trailing" constant="167" id="RkW-RS-6ew"/>
+                            <constraint firstItem="vhy-CZ-BUZ" firstAttribute="trailing" secondItem="x68-fl-DBm" secondAttribute="trailing" constant="182" id="RkW-RS-6ew"/>
                             <constraint firstItem="FMD-tc-Sp2" firstAttribute="leading" secondItem="vhy-CZ-BUZ" secondAttribute="leading" id="dTh-eJ-pUn"/>
-                            <constraint firstItem="x68-fl-DBm" firstAttribute="bottom" secondItem="vhy-CZ-BUZ" secondAttribute="bottom" constant="8" id="ij5-yt-X52"/>
+                            <constraint firstItem="x68-fl-DBm" firstAttribute="bottom" secondItem="vhy-CZ-BUZ" secondAttribute="bottom" id="ij5-yt-X52"/>
                             <constraint firstItem="x68-fl-DBm" firstAttribute="top" secondItem="FMD-tc-Sp2" secondAttribute="bottom" id="oU5-RS-0SF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vhy-CZ-BUZ"/>
