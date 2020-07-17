@@ -345,7 +345,6 @@
 		03D4E0C124C0089D005FF3DF = {
 			isa = PBXGroup;
 			children = (
-				03D030E424C032760024D873 /* App */,
 				03D4E0CC24C0089D005FF3DF /* Movies */,
 				03D4E0E324C008A0005FF3DF /* MoviesTests */,
 				03D4E0CB24C0089D005FF3DF /* Products */,
@@ -366,6 +365,7 @@
 		03D4E0CC24C0089D005FF3DF /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				03D030E424C032760024D873 /* App */,
 				03D0310924C03C0E0024D873 /* Entities */,
 				03D0310524C03BC10024D873 /* Interactors */,
 				03D030ED24C0349F0024D873 /* Xib */,
